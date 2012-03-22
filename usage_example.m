@@ -3,14 +3,21 @@
 % See also PARSE_OPENSTREETMAP, PLOT_WAY, EXTRACT_CONNECTIVITY,
 %          GET_UNIQUE_NODE_XY.
 %
-% File:         test_openstreetmap.m
+% File:         usage_example.m
 % Author:       Ioannis Filippidis, jfilippidis@gmail.com
 % Date:         2010.11.25
 % Language:     MATLAB R2011b
 % Purpose:      to illustrate usage of the OpenStreetMap Toolbox for MATLAB
 % Copyright:    Ioannis Filippidis, 2010-
 
-%openstreetmap_filename = 'test_map.osm';
+% download an OpenStreetMap XML Data file (extension .osm) from the
+% OpenStreetMap website:
+%   http://www.openstreetmap.org/
+% after zooming in the area of interest and using the "Export" option to
+% save it as an OpenStreetMap XML Data file, selecting this from the
+% "Format to Export" options. The OSM XML is specified in:
+%   http://wiki.openstreetmap.org/wiki/.osm
+openstreetmap_filename = 'map.osm';
 
 %% convert XML -> MATLAB struct
 % convert the OpenStreetMap XML Data file donwloaded as map.osm
