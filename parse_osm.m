@@ -1,15 +1,18 @@
+function [parsed_osm] = parse_osm(osm)
+%
+% See also PARSE_OPENSTREETMAP, LOAD_OSM_XML.
+%
 % File:         parse_osm.m
 % Author:       Ioannis Filippidis, jfilippidis@gmail.com
 % Date:         2010.11.20
-% Language:     MATLAB, program version: 7.11 (2010b)
+% Language:     MATLAB R2011b
 % Purpose:      parse loaded OpenStreetMap xml structure
 % Copyright:    Ioannis Filippidis, 2010-
 
-function [parsed_osm] = parse_osm(osm)
 parsed_osm.bounds = parse_bounds(osm.bounds);
 parsed_osm.node = parse_node(osm.node);
 parsed_osm.way = parse_way(osm.way);
-parsed_osm.relation = parse_relation(osm.relation);
+%parsed_osm.relation = parse_relation(osm.relation);
 parsed_osm.Attributes = osm.Attributes;
 
 function [parsed_bounds] = parse_bounds(bounds)
@@ -66,15 +69,16 @@ parsed_way.nd = nd;
 parsed_way.tag = tag;
 
 function [parsed_relation] = parse_relation(relation)
-Nrelations = size(relation,2);
+Nrelation = size(relation,2);
 
-% id = zeros(1,Nrelation);
-% member = cell{1,Nrelation};
-% tag = cell{1,Relation};
-% for i = 1:Nrelation
-%     relationtemp = osm.relation{i};
-%     
-%     id(1,i) = str2double(relationtemp.Attributes.id);
-% end
+id = zeros(1,Nrelation);
+%member = cell(1, Nrelation);
+%tag = cell(1, Nrelation);
+for i = 1:Nrelation
+    currelation = relation{i};
     
-parsed_relation = [];
+    curid = currelation.Attributes.id;
+    id(1,i) = str2double(curid);
+end
+
+parsed_relation.id = id;

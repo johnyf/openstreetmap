@@ -1,12 +1,38 @@
+function [connectivity_matrix, intersection_nodes] = ...
+    extract_connectivity(parsed_osm)
+%EXTRACT_CONNECTIVITY   extract road connectivity from parsed OpenStreetMap
+%   [connectivity_matrix, intersection_nodes] = EXTRACT_CONNECTIVITY(parsed_osm)
+%   extracts the connectivity of the road network of the OpenStreetMap
+%   file. This yields a set of nodes where the roads intersect.
+%
+%   Some intersections may appear multiple times, because different roads
+%   may meet at the same intersection and because multiple directions are
+%   considered different roads. For this reason, in addition to the
+%   connectivity matrix, the unique nodes are also identified.
+%
+% usage
+%   [connectivity_matrix, intersection_nodes] = ...
+%                                   EXTRACT_CONNECTIVITY(parsed_osm)
+%
+% input
+%   parsed_osm = parsed OpenStreetMap (.osm) XML file,
+%                as returned by function parse_openstreetmap
+%
+% output
+%   connectivity_matrix = adjacency matrix of the directed graph
+%                         of the transportation network
+%                       = adj(i, j) = 1 (if a road leads from node i to j)
+%                                   | 0 (otherwise)
+%   intersection_nodes = the unique nodes of the intersections
+%
+% See also PARSE_OPENSTREETMAP, PLOT_WAY.
+%
 % File:         extract_connectivity.m
 % Author:       Ioannis Filippidis, jfilippidis@gmail.com
 % Date:         2010.11.20
-% Language:     MATLAB, program version: 7.11 (2010b)
+% Language:     MATLAB R2011b
 % Purpose:      extract road connectivity from parsed osm structure
 % Copyright:    Ioannis Filippidis, 2010-
-
-function [node_connectivity, intersection_nodes] = ...
-    extract_connectivity(parsed_osm)
 
 [~, node, way, ~] = assign_from_parsed(parsed_osm);
 
@@ -17,7 +43,7 @@ road_vals = {'motorway', 'motorway_link', 'trunk', 'trunk_link',...
 
 %% connectivity
 Nsamends = 0;
-node_connectivity = sparse([]);
+connectivity_matrix = sparse([]);
 for i=1:size(way.id, 2)
     waynd = way.nd{1,i};
     
@@ -47,7 +73,7 @@ for i=1:size(way.id, 2)
             if isempty(idx) == 0
                 Nsamends = Nsamends +1;
                 ndid = find(waynd(1,j) == node.id);
-                node_connectivity(nd1id, ndid) = 1;
+                connectivity_matrix(nd1id, ndid) = 1;
                 nd1id = [nd1id, ndid];
                 break; % link to at least one other way suffices to notice
             end
@@ -56,17 +82,17 @@ for i=1:size(way.id, 2)
 end
 
 %% unique nodes
-nnzrows = any(node_connectivity, 2);
-nnzcmns = any(node_connectivity, 1);
+nnzrows = any(connectivity_matrix, 2);
+nnzcmns = any(connectivity_matrix, 1);
 nnznds = nnzrows' | nnzcmns;
 intersection_nodes = nnznds;
 
 figure;
-    spy(node_connectivity)
+    %spy(connectivity_matrix)
 
 %% report
 disp( ['Found ' num2str(Nsamends) ' common nodes.'] )
-disp( ['Connectivity matrix contains ' num2str(nnz(node_connectivity) )...
-       'nonzero elements.'] )
+disp( ['Connectivity matrix contains ' num2str(nnz(connectivity_matrix) )...
+       ' nonzero elements.'] )
 disp( ['Although the unique ones were '...
         num2str(nnz(nnznds) ) '.'] )

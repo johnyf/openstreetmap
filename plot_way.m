@@ -1,23 +1,40 @@
+function [] = plot_way(ax, parsed_osm, map_img_filename)
+%PLOT_WAY   plot parsed OpenStreetMap file
+%
+% usage
+%   PLOT_WAY(ax, parsed_osm)
+%
+% input
+%   ax = axes object handle
+%   parsed_osm = parsed OpenStreetMap (.osm) XML file,
+%                as returned by function parse_openstreetmap
+%   map_img_filename = map image filename to load and plot under the
+%                      transportation network
+%                    = string (optional)
+%
+% See also PARSE_OPENSTREETMAP, EXTRACT_CONNECTIVITY.
+%
 % File:         plot_way.m
 % Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.06 - 
-% Language:     MATLAB, program version: 7.11 (2010b)
-% Purpose:      parse .osm file (OpenStreetMap)
+% Date:         2010.11.06
+% Language:     MATLAB R2011b
+% Purpose:      plot parsed OpenStreetMap file
 % Copyright:    Ioannis Filippidis, 2010-
 
 % ToDo
 %   add double way roads
 
-function [] = plot_way(hax, parsed_osm)
+if nargin < 3
+    map_img_filename = [];
+end
 
-[bounds, node, way, relation] = assign_from_parsed(parsed_osm);
+[bounds, node, way, ~] = assign_from_parsed(parsed_osm);
 
 disp_info(bounds, size(node.id, 2), size(way.id, 2))
-show_ways(hax, bounds, node, way);
+show_ways(ax, bounds, node, way, map_img_filename);
 
-function [] = show_ways(hax, bounds, node, way)
-%figure;
-show_map(hax, bounds)
+function [] = show_ways(hax, bounds, node, way, map_img_filename)
+show_map(hax, bounds, map_img_filename)
 
 %plot(node.xy(1,:), node.xy(2,:), '.')
 
@@ -57,10 +74,6 @@ end
 disp(key_catalog')
 
 function [] = disp_info(bounds, Nnode, Nway)
-disp('--')
-disp('OpenStreetMap (.osm) MATLAB Parser v.0.2')
-disp('Ioannis Filippidis & Georgios Karavas (c) 2010')
-disp('--')
 disp( ['Bounds: xmin = ' num2str(bounds(1,1)),...
     ', xmax = ', num2str(bounds(1,2)),...
     ', ymin = ', num2str(bounds(2,1)),...
