@@ -88,7 +88,7 @@ nnznds = nnzrows' | nnzcmns;
 intersection_nodes = nnznds;
 
 figure;
-    %spy(connectivity_matrix)
+    spy(connectivity_matrix)
 
 %% report
 disp( ['Found ' num2str(Nsamends) ' common nodes.'] )
