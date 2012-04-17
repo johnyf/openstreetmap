@@ -39,39 +39,54 @@ show_map(hax, bounds, map_img_filename)
 %plot(node.xy(1,:), node.xy(2,:), '.')
 
 key_catalog = {};
-for i=1:size(way.id,2)
+for i=1:size(way.id, 2)
     [key, val] = get_way_tag_key(way.tag{1,i} );
     
     % find unique way types
-    if isempty( find(ismember(key_catalog, key) == 1, 1) )
-        key_catalog(1,end+1) = {key};
+    if isempty(key)
+        %
+    elseif isempty( find(ismember(key_catalog, key) == 1, 1) )
+        key_catalog(1, end+1) = {key};
     end
     
+    % way = highway or amenity ?
     flag = 0;
     switch key
         case 'highway'
-            if strcmp(val,'bus_stop')
+            flag = 1;
+            
+            % bus stop ?
+            if strcmp(val, 'bus_stop')
                 disp('Bus stop found')
             end
-            flag = 1;
         case 'amenity'
-            if strcmp(val,'bus_station')
+            % bus station ?
+            if strcmp(val, 'bus_station')
                 disp('Bus station found')
             end
+        otherwise
+            disp('way without tag.')
     end
     
-    waynd = way.nd{1,i};
-    nd = zeros(2,size(waynd,2));
-    for j=1:size(waynd,2)
-        nd(:,j) = node.xy(:, waynd(1,j) == node.id);
+    % plot highway
+    way_nd_ids = way.nd{1, i};
+    num_nd = size(way_nd_ids, 2);
+    nd_coor = zeros(2, num_nd);
+    nd_ids = node.id;
+    for j=1:num_nd
+        cur_nd_id = way_nd_ids(1, j);
+        nd_coor(:, j) = node.xy(:, cur_nd_id == nd_ids);
     end
-
+    
+    % plot way (highway = red, other = green)
     if flag == 1
-        plot(hax, nd(1,:), nd(2,:), 'b-')
+        plot(hax, nd_coor(1,:), nd_coor(2,:), 'b-')
+    else
+        plot(hax, nd_coor(1,:), nd_coor(2,:), 'g--')
     end
     %waitforbuttonpress
 end
-disp(key_catalog')
+disp(key_catalog.')
 
 function [] = disp_info(bounds, Nnode, Nway)
 disp( ['Bounds: xmin = ' num2str(bounds(1,1)),...

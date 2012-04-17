@@ -17,13 +17,13 @@
 % save it as an OpenStreetMap XML Data file, selecting this from the
 % "Format to Export" options. The OSM XML is specified in:
 %   http://wiki.openstreetmap.org/wiki/.osm
-openstreetmap_filename = 'map.osm';
+openstreetmap_filename = 'openstreetmap/genoa_small.osm';
 
 %% convert XML -> MATLAB struct
 % convert the OpenStreetMap XML Data file donwloaded as map.osm
 % to a MATLAB structure containing part of the information describing the
 % transportation network
-[parsed_osm] = parse_openstreetmap(openstreetmap_filename);
+[parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename);
 
 %% plot
 % plot the network, optionally a raster image can also be provided for the

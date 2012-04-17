@@ -1,4 +1,4 @@
-function [parsed_osm] = parse_openstreetmap(openstreetmap_filename)
+function [parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename)
 %PARSE_OPENSTREETMAP    parse an OpenStreetMap XML file (OSM XML)
 %   [parsed_osm] = PARSE_OPENSTREETMAP(openstreetmap_filename) Parses an
 %   OpenStreetMap XML file saved from:
@@ -16,6 +16,8 @@ function [parsed_osm] = parse_openstreetmap(openstreetmap_filename)
 %
 % output
 %   parsed_osm = MATLAB data structure of parsed OpenStreetMap file
+%   osm_xml = MATLAB data structure of XML OpenStreetMap file
+%             (before parsing), as loaded by xml2struct (see dependency).
 %
 % dependency
 %   xml2struct, File Exchange ID = 28518, (c) 2010 by Wouter Falkena
@@ -37,4 +39,5 @@ function [parsed_osm] = parse_openstreetmap(openstreetmap_filename)
 % Copyright:    Ioannis Filippidis, 2010-
 
 map_osm = load_osm_xml(openstreetmap_filename);
-parsed_osm = parse_osm(map_osm.osm);
+osm_xml = map_osm.osm;
+parsed_osm = parse_osm(osm_xml);

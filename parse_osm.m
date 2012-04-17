@@ -1,4 +1,4 @@
-function [parsed_osm] = parse_osm(osm)
+function [parsed_osm] = parse_osm(osm_xml)
 %
 % See also PARSE_OPENSTREETMAP, LOAD_OSM_XML.
 %
@@ -9,11 +9,11 @@ function [parsed_osm] = parse_osm(osm)
 % Purpose:      parse loaded OpenStreetMap xml structure
 % Copyright:    Ioannis Filippidis, 2010-
 
-parsed_osm.bounds = parse_bounds(osm.bounds);
-parsed_osm.node = parse_node(osm.node);
-parsed_osm.way = parse_way(osm.way);
+parsed_osm.bounds = parse_bounds(osm_xml.bounds);
+parsed_osm.node = parse_node(osm_xml.node);
+parsed_osm.way = parse_way(osm_xml.way);
 %parsed_osm.relation = parse_relation(osm.relation);
-parsed_osm.Attributes = osm.Attributes;
+parsed_osm.Attributes = osm_xml.Attributes;
 
 function [parsed_bounds] = parse_bounds(bounds)
 bounds = bounds.Attributes;
@@ -41,22 +41,28 @@ parsed_node.xy = xy;
 function [parsed_way] = parse_way(way)
 Nways = size(way,2);
 
-id = zeros(1,Nways);
-nd = cell(1,Nways);
-tag = cell(1,Nways);
+id = zeros(1, Nways);
+nd = cell(1, Nways);
+tag = cell(1, Nways);
 for i=1:Nways
     waytemp = way{i};
     
     id(1,i) = str2double(waytemp.Attributes.id);
     
     Nnd = size(waytemp.nd, 2);
-    ndtemp = zeros(1,Nnd);
+    ndtemp = zeros(1, Nnd);
     for j=1:Nnd
-        ndtemp(1,j) = str2double(waytemp.nd{j}.Attributes.ref);
+        ndtemp(1, j) = str2double(waytemp.nd{j}.Attributes.ref);
     end
-    nd{1,i} = ndtemp;
+    nd{1, i} = ndtemp;
     
-    tag{1,i} = waytemp.tag;
+    % way with or without tag(s) ?
+    if isfield(waytemp, 'tag')
+        tag{1, i} = waytemp.tag;
+    else
+        tag{1, i} = []; % no tags for this way
+    end
+    
 %     Ntag = size(waytemp.tag,2);
 %     for k=1:Ntag
 %         if(strcmp(waytemp.tag{k}.Attributes.k,'name'))
@@ -69,7 +75,7 @@ parsed_way.nd = nd;
 parsed_way.tag = tag;
 
 function [parsed_relation] = parse_relation(relation)
-Nrelation = size(relation,2);
+Nrelation = size(relation, 2);
 
 id = zeros(1,Nrelation);
 %member = cell(1, Nrelation);
@@ -78,7 +84,7 @@ for i = 1:Nrelation
     currelation = relation{i};
     
     curid = currelation.Attributes.id;
-    id(1,i) = str2double(curid);
+    id(1, i) = str2double(curid);
 end
 
 parsed_relation.id = id;
