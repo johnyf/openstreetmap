@@ -9,7 +9,7 @@ function [parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename)
 %       http://wiki.openstreetmap.org/wiki/.osm
 %
 % usage
-%   [parsed_osm] = PARSE_OPENSTREETMAP(openstreetmap_filename)
+%   [parsed_osm, osm_xml] = PARSE_OPENSTREETMAP(openstreetmap_filename)
 %
 % input
 %   openstreetmap_filename = string of OpenStreetMap XML Data file name.
@@ -33,8 +33,8 @@ function [parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename)
 %
 % File:         parse_openstreetmap.m
 % Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.09
-% Language:     MATLAB R2011b
+% Date:         2010.11.09 - 2012.05.03
+% Language:     MATLAB R2012a
 % Purpose:      parse OpenStreetMap XML Data file into MATLAB structure
 % Copyright:    Ioannis Filippidis, 2010-
 

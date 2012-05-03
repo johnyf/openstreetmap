@@ -3,13 +3,13 @@
 openstreetmap_filename = 'genoa.osm';
 
 % parse data
-[parsed_osm] = parse_openstreetmap(openstreetmap_filename);
+[parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename);
 
 % find which nodes are connected
 [connectivity_matrix, intersection_node_indices] = extract_connectivity(parsed_osm);
 intersection_nodes = get_unique_node_xy(parsed_osm, intersection_node_indices);
 
-% plan a route
+%% plan a route
 %{
 start = 1105; % node id
 target = 889;

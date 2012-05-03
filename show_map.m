@@ -4,13 +4,14 @@ function [] = show_map(ax, bounds, map_img_filename)
 %
 % File:         show_map.m
 % Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.21 - 2012.03.22
-% Language:     MATLAB R2011b
-% Purpose:      plot raster map in figure
+% Date:         2010.11.21 - 2012.05.03
+% Language:     MATLAB R2012a
+% Purpose:      plot raster map in figure and fix plot bounds
 % Copyright:    Ioannis Filippidis, 2010-
 
 hold(ax, 'on')
 
+% image provided ?
 if ~isempty(map_img_filename)
     map_img = imread(map_img_filename);
     image('Parent', ax, 'CData', flipdim(map_img,1),...
@@ -26,4 +27,5 @@ ylabel(ax, 'Latitude (^o)')
 title(ax, 'OpenStreetMap osm file')
 
 axis(ax, 'image')
-axis(ax, [bounds(1,1) bounds(1,2) bounds(2,1) bounds(2,2)])
+axis(ax, [bounds(1, :), bounds(2, :) ] )
+lat_lon_proportions(ax)
