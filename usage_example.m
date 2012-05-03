@@ -17,7 +17,7 @@
 % save it as an OpenStreetMap XML Data file, selecting this from the
 % "Format to Export" options. The OSM XML is specified in:
 %   http://wiki.openstreetmap.org/wiki/.osm
-openstreetmap_filename = 'map.osm';
+openstreetmap_filename = 'dino.osm';
 
 %% convert XML -> MATLAB struct
 % convert the OpenStreetMap XML Data file donwloaded as map.osm
@@ -33,5 +33,5 @@ plot_way(ax, parsed_osm)
 %plot_way(ax, parsed_osm, map_img_filename) % if you also have a raster image
 
 %% find connectivity
-[connectivity_matrix, intersection_nodes] = extract_connectivity(parsed_osm);
-[uniquend] = get_unique_node_xy(parsed_osm, intersection_nodes);
+[connectivity_matrix, intersection_node_indices] = extract_connectivity(parsed_osm);
+[uniquend] = get_unique_node_xy(parsed_osm, intersection_node_indices);
