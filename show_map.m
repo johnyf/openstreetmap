@@ -1,5 +1,10 @@
 function [] = show_map(ax, bounds, map_img_filename)
 %
+% dependency
+%   lat_lon_proportions, File Exchange ID = 32462,
+%   (c) 2011 by Jonathan Sullivan
+%   http://www.mathworks.com/matlabcentral/fileexchange/32462-correctly-proportion-a-latlon-plot
+%
 % See also PLOT_WAY.
 %
 % File:         show_map.m

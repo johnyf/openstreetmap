@@ -4,6 +4,7 @@ function [map_osm] = load_osm_xml(filename)
 %
 % dependency
 %   xml2struct, File Exchange ID = 28518, (c) 2010 by Wouter Falkena
+%   http://www.mathworks.com/matlabcentral/fileexchange/28518-xml2struct
 %
 % See also PARSE_OPENSTREETMAP, PARSE_OSM.
 %
