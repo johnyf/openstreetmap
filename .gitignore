@@ -1,4 +1,5 @@
 syntax: glob
+.DS_Store
 *.pyc
 *.pov
 *.aux
@@ -15,11 +16,10 @@ syntax: glob
 *.pdfsync
 *.tdo
 *.toc
-*.nav #beamer
+*.nav
 *.xdv
 *.gz_temp
 #
-*.hgignore
 *.bat
 #
 *.jpeg
@@ -65,7 +65,7 @@ syntax: glob
 *.rar
 *.zip
 *.7z
-*.osm #openstreetmap
+*.osm
 #
 *.exe
 *.dll
@@ -79,3 +79,7 @@ syntax: glob
 *.mwv
 *.mp3
 *.mp4
+#
+# site-specific
+dist/*
+maps/*
