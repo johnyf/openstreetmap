@@ -15,6 +15,23 @@ function [parsed_osm] = parse_osm(osm_xml)
 % Purpose:      parse loaded OpenStreetMap xml structure
 % Copyright:    Ioannis Filippidis, 2010-
 
+% memo about osm contents
+%   data primitives
+%       1) nodes
+%           id (unique between nodes)
+%           lat \in [-90, 90] (latitude)
+%           lon \in [-180, 180] (longitude)
+%           ele (elevation  = altitude - optional)
+%           tags
+%       2) ways    (& closed ways = areas)
+%           id
+%           nodes (node ids)
+%           tags
+%       3) relations
+%           members
+%           tags (k=v)
+%           Attributes
+
 parsed_osm.bounds = parse_bounds(osm_xml.bounds);
 parsed_osm.node = parse_node(osm_xml.node);
 parsed_osm.way = parse_way(osm_xml.way);

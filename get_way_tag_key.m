@@ -20,7 +20,7 @@ else
         warning('Way has NO tag.')
     else
         warning('Way has tag which is not a structure nor cell array, but:')
-        deisp(tag)
+        disp(tag)
     end
     
     key = '';

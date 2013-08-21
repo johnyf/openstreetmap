@@ -61,4 +61,4 @@ for i=only_node_indices
     textmd(node_xys(:, i), curtxt, 'Parent', ax)
 end
 
-givehold(ax, held)
+restorehold(ax, held)
