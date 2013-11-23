@@ -1,18 +1,14 @@
 function [] = show_map(ax, bounds, map_img_filename)
+% plot raster map in figure and fix plot bounds
 %
 % dependency
 %   lat_lon_proportions, File Exchange ID = 32462,
 %   (c) 2011 by Jonathan Sullivan
 %   http://www.mathworks.com/matlabcentral/fileexchange/32462-correctly-proportion-a-latlon-plot
 %
-% See also PLOT_WAY.
+% 2010.11.21 (c) Ioannis Filippidis, jfilippidis@gmail.com
 %
-% File:         show_map.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.21 - 2012.05.03
-% Language:     MATLAB R2012a
-% Purpose:      plot raster map in figure and fix plot bounds
-% Copyright:    Ioannis Filippidis, 2010-
+% See also PLOT_WAY.
 
 hold(ax, 'on')
 

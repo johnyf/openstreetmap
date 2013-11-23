@@ -1,4 +1,5 @@
 function [] = plot_nodes(ax, parsed_osm, only_node_indices, show_id)
+% plot (selected) nodes and label each with index and id
 %
 % usage
 %   PLOT_NODES(ax, parsed_osm, only_node_indices, show_id)
@@ -12,15 +13,10 @@ function [] = plot_nodes(ax, parsed_osm, only_node_indices, show_id)
 %   show_id = select whether to show or not the ID numbers of nodes as text
 %             labes within the plot
 %           = 0 (do not show labels) | 1 (show labels)
-%   
-%   See also PARSE_OPENSTREETMAP, ROUTE_PLANNER.
 %
-% File:         plot_nodes.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2012.04.24 - 2012.05.03
-% Language:     MATLAB R2012a
-% Purpose:      plot (selected) nodes and label each with index and id
-% Copyright:    Ioannis Filippidis, 2012-
+% 2012.04.24 (c) Ioannis Filippidis, jfilippidis@gmail.com
+%
+% See also PARSE_OPENSTREETMAP, ROUTE_PLANNER.
 
 % do not show node id (default)
 if nargin < 4

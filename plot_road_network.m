@@ -1,4 +1,5 @@
 function [] = plot_road_network(ax, connectivity_matrix, parsed_osm)
+% plot the nodes and edges connecting them
 %
 % usage
 %   PLOT_ROAD_NETWORK(ax, connectivity_matrix, parsed_osm)
@@ -12,14 +13,11 @@ function [] = plot_road_network(ax, connectivity_matrix, parsed_osm)
 %                after parsing, as returned by function
 %                parse_openstreetmap.
 %
-%   See also EXTRACT_CONNECTIVITY, PARSE_OPENSTREETMAP, ROUTE_PLANNER.
+% 
 %
-% File:         plot_road_network.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2012.04.24
-% Language:     MATLAB R2012a
-% Purpose:      plot the nodes and edges connecting them
-% Copyright:    Ioannis Filippidis, 2012-
+% 2012.04.24 (c) Ioannis Filippidis, jfilippidis@gmail.com
+%
+% See also EXTRACT_CONNECTIVITY, PARSE_OPENSTREETMAP, ROUTE_PLANNER.
 
 nodes = parsed_osm.node;
 node_ids = nodes.id;

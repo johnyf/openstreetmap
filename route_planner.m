@@ -1,4 +1,5 @@
 function [route, dist] = route_planner(dg, S, T)
+% find shortest path in graph of road intersections (nodes)
 %
 % usage
 %   [route, dist] = ROUTE_PLANNER(dg, S, T)
@@ -27,14 +28,9 @@ function [route, dist] = route_planner(dg, S, T)
 % OR
 %   graphshortestpath, part of MATLAB Bioinformatics Toolbox.
 %
-%   See also EXTRACT_CONNECTIVITY, PLOT_ROUTE, PLOT_ROAD_NETWORK, PLOT_NODES.
+% 2010.11.17 (c) Ioannis Filippidis, jfilippidis@gmail.com
 %
-% File:         route_planner.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.17 - 2012.05.03
-% Language:     MATLAB R2012a
-% Purpose:      find shortest path in graph of road intersections (nodes)
-% Copyright:    Ioannis Filippidis, 2010-
+% See also EXTRACT_CONNECTIVITY, PLOT_ROUTE, PLOT_ROAD_NETWORK, PLOT_NODES.
 
 %% find path
 

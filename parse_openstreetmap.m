@@ -29,14 +29,9 @@ function [parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename)
 %   http://wiki.openstreetmap.org/wiki/Data_Primitives
 %   http://www.mathworks.com/matlabcentral/fileexchange/28518-xml2struct
 %
-% See also PLOT_WAY, EXTRACT_CONNECTIVITY.
+% 2010.11.09 (c) Ioannis Filippidis, jfilippidis@gmail.com
 %
-% File:         parse_openstreetmap.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.09 - 2012.05.03
-% Language:     MATLAB R2012a
-% Purpose:      parse OpenStreetMap XML Data file into MATLAB structure
-% Copyright:    Ioannis Filippidis, 2010-
+% See also PLOT_WAY, EXTRACT_CONNECTIVITY.
 
 map_osm = load_osm_xml(openstreetmap_filename);
 osm_xml = map_osm.osm;

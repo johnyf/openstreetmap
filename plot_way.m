@@ -12,14 +12,9 @@ function [] = plot_way(ax, parsed_osm, map_img_filename)
 %                      transportation network
 %                    = string (optional)
 %
-% See also PARSE_OPENSTREETMAP, EXTRACT_CONNECTIVITY.
+% 2010.11.06 (c) Ioannis Filippidis, jfilippidis@gmail.com
 %
-% File:         plot_way.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.06 - 2012.04.17
-% Language:     MATLAB R2012a
-% Purpose:      plot parsed OpenStreetMap file
-% Copyright:    Ioannis Filippidis, 2010-
+% See also PARSE_OPENSTREETMAP, EXTRACT_CONNECTIVITY.
 
 % ToDo
 %   add double way roads

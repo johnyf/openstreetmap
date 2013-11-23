@@ -1,19 +1,15 @@
 function [parsed_osm] = parse_osm(osm_xml)
-%PARSE_OSM  Creates new structure from loaded OSM XML structure.
+%PARSE_OSM  Parse into a structure a loaded OSM XML structure.
+%
 %   parsed_osm = PARSE_OSM(osm_xml) takes as input a MATLAB structure
 %   osm_xml containing the XML data loaded from an OpenStreetMap file using
 %   function load_osm_xml, and returns another MATLAB structure containing
 %   a subset of these data parsed appropriately for further usage by other
 %   functions.
 %
-% See also PARSE_OPENSTREETMAP, LOAD_OSM_XML.
+% 2010.11.20 (c) Ioannis Filippidis, jfilippidis@gmail.com
 %
-% File:         parse_osm.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.20 - 2012.05.03
-% Language:     MATLAB R2012a
-% Purpose:      parse loaded OpenStreetMap xml structure
-% Copyright:    Ioannis Filippidis, 2010-
+% See also PARSE_OPENSTREETMAP, LOAD_OSM_XML.
 
 % memo about osm contents
 %   data primitives

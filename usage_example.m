@@ -1,15 +1,9 @@
 % example script for using the OpenStreetMap functions
 %
-% See also PARSE_OPENSTREETMAP, PLOT_WAY, EXTRACT_CONNECTIVITY,
-%          GET_UNIQUE_NODE_XY, ROUTE_PLANNER, PLOT_ROUTE, PLOT_NODES.
+% use the example map.osm file in the release on github
 %
-% File:         usage_example.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.25 - 2012.05.03
-% Language:     MATLAB R2012a
-% Purpose:      to illustrate usage of the OpenStreetMap functions for MATLAB
-% Copyright:    Ioannis Filippidis, 2010-
-
+% or
+%
 % download an OpenStreetMap XML Data file (extension .osm) from the
 % OpenStreetMap website:
 %   http://www.openstreetmap.org/
@@ -17,6 +11,11 @@
 % save it as an OpenStreetMap XML Data file, selecting this from the
 % "Format to Export" options. The OSM XML is specified in:
 %   http://wiki.openstreetmap.org/wiki/.osm
+%
+% See also PARSE_OPENSTREETMAP, PLOT_WAY, EXTRACT_CONNECTIVITY,
+%          GET_UNIQUE_NODE_XY, ROUTE_PLANNER, PLOT_ROUTE, PLOT_NODES.
+%
+% 2010.11.25 (c) Ioannis Filippidis, jfilippidis@gmail.com
 
 %% name file
 openstreetmap_filename = 'map.osm';

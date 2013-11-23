@@ -1,10 +1,7 @@
 function [parsed_osm] = main_mapping(varargin)
-% File:         main_mapping.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.06
-% Language:     MATLAB R2011b
-% Purpose:      handle application map
-% Copyright:    Ioannis Filippidis, 2010-
+% handle application map
+%
+% 2010.11.06 (c) Ioannis Filippidis, jfilippidis@gmail.com
 
 if nargin == 0
     hax = gca;

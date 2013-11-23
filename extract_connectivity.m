@@ -25,14 +25,9 @@ function [connectivity_matrix, intersection_node_indices] = ...
 %                                   | 0 (otherwise)
 %   intersection_nodes = the unique nodes of the intersections
 %
-% See also PARSE_OPENSTREETMAP, PLOT_WAY.
+% 2010.11.20 (c) Ioannis Filippidis, jfilippidis@gmail.com
 %
-% File:         extract_connectivity.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.20
-% Language:     MATLAB R2011b
-% Purpose:      extract road connectivity from parsed osm structure
-% Copyright:    Ioannis Filippidis, 2010-
+% See also PARSE_OPENSTREETMAP, PLOT_WAY.
 
 [~, node, way, ~] = assign_from_parsed(parsed_osm);
 

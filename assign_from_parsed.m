@@ -1,13 +1,9 @@
 function [bounds, node, way, relation] = assign_from_parsed(parsed_osm)
+% assign from parsed osm structure
 %
 % See also PLOT_WAY, EXTRACT_CONNECTIVITY.
 %
-% File:         assign_from_parsed.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.20
-% Language:     MATLAB R2011b
-% Purpose:      assign from parsed osm structure
-% Copyright:    Ioannis Filippidis, 2010-
+% 2010.11.20 (c) Ioannis Filippidis, jfilippidis@gmail.com
 
 disp('Parsed OpenStreetMap given.')
 

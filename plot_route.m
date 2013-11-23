@@ -1,4 +1,5 @@
 function [] = plot_route(ax, route, parsed_osm)
+% plot (over map) the route found by route planner
 %
 % usage
 %   PLOT_ROUTE(ax, route, parsed_osm)
@@ -10,14 +11,9 @@ function [] = plot_route(ax, route, parsed_osm)
 %   parsed_osm = parsed OpenStreetMap XML data, as returned by the
 %                parse_openstreetmap function.
 %
-%   See also ROUTE_PLANNER, PARSE_OPENSTREETMAP.
+% 2012.04.24 (c) Ioannis Filippidis, jfilippidis@gmail.com
 %
-% File:         plot_route.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2012.04.24
-% Language:     MATLAB R2012a
-% Purpose:      plot (over map) the route found by route planner
-% Copyright:    Ioannis Filippidis, 2012-
+% See also ROUTE_PLANNER, PARSE_OPENSTREETMAP.
 
 % empty path ?
 if isempty(route)

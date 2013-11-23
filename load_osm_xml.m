@@ -1,4 +1,6 @@
 function [map_osm] = load_osm_xml(filename)
+% load OpenStreetMap XML file contents as a MATLAB structure
+%
 % download OpenStreetMap XML Data file to be parsed from:
 %   http://www.openstreetmap.org/
 %
@@ -10,14 +12,9 @@ function [map_osm] = load_osm_xml(filename)
 %   xml2struct renamed to xml2struct_fex28518 to avoid name conflicts
 %   with matlab bioinformatics toolbox
 %
-% See also PARSE_OPENSTREETMAP, PARSE_OSM.
+% 2010.11.06 (c) Ioannis Filippidis, jfilippidis@gmail.com
 %
-% File:         load_osm_xml.m
-% Author:       Ioannis Filippidis, jfilippidis@gmail.com
-% Date:         2010.11.06 - 
-% Language:     MATLAB R2011b
-% Purpose:      load OpenStreetMap XML file contents as a MATLAB structure
-% Copyright:    Ioannis Filippidis, 2010-
+% See also PARSE_OPENSTREETMAP, PARSE_OSM.
 
 if ~ischar(filename)
     error('Filename should be a string.')
