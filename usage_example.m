@@ -19,7 +19,7 @@
 %   http://wiki.openstreetmap.org/wiki/.osm
 
 %% name file
-openstreetmap_filename = 'map.osm'; %'genoa.osm';
+openstreetmap_filename = 'map.osm';
 %map_img_filename = 'map.png'; % image file saved from online, if available
 
 %% convert XML -> MATLAB struct
