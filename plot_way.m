@@ -70,15 +70,23 @@ for i=1:size(way.id, 2)
     nd_ids = node.id;
     for j=1:num_nd
         cur_nd_id = way_nd_ids(1, j);
-        nd_coor(:, j) = node.xy(:, cur_nd_id == nd_ids);
+        if ~isempty(node.xy(:, cur_nd_id == nd_ids))
+             nd_coor(:, j) = node.xy(:, cur_nd_id == nd_ids);
+        end
     end
     
-    % plot way (highway = red, other = green)
-    if flag == 1
-        plot(hax, nd_coor(1,:), nd_coor(2,:), 'b-')
-    else
-        plot(hax, nd_coor(1,:), nd_coor(2,:), 'g--')
+    % remove zeros
+    nd_coor(any(nd_coor==0,2),:)=[];
+    
+    if ~isempty(nd_coor)
+        % plot way (highway = blue, other = green)
+        if flag == 1
+            plot(hax, nd_coor(1,:), nd_coor(2,:), 'b-')
+        else
+            plot(hax, nd_coor(1,:), nd_coor(2,:), 'g--')
+        end
     end
+    
     %waitforbuttonpress
 end
 disp(key_catalog.')
