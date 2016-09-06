@@ -4,7 +4,7 @@ function [intersection_nodes] = ...
 %
 % 2010.11.20 (c) Ioannis Filippidis, jfilippidis@gmail.com
 
-ids = parsed_osm.node.xy(:, intersection_node_indices);
+ids = parsed_osm.node.id(:, intersection_node_indices);
 xys = parsed_osm.node.xy(:, intersection_node_indices);
 
 intersection_nodes.id = ids;
